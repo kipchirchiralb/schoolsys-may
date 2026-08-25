@@ -7,5 +7,33 @@
   </head>
   <body>
     <h1>Subjects Data</h1>
+    <form action="/add-subject" method="post" >
+      <h2> Add New Subject</h2>
+      <label for="subject_name">Subject Name:</label>
+      <input type="text" id="subject_name" name="subject_name" required />
+      <br />
+      <label for="subject_code">Subject Code:</label>
+      <input type="text" id="subject_code" name="subject_code" required />
+      <br />
+      <label for="category">Category:</label>
+      <select name="category" id="category">
+        <option value="Science">Science</option>
+        <option value="Arts">Arts</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Languages">Languages</option>
+      </select>
+      <br />
+      <button type="submit">Add Subject</button>
+    </form>
+    <ul>   
+    <%  subjects.forEach(subject=>{ %>
+      <li>
+        <h2> Subject ID: <%= subject.subject_id %> </h2>
+        <p> Subject Name: <%= subject.subject_name %> </p>
+        <p> Subject Code: <%= subject.subject_code %> </p>
+        <p> Category: <%= subject.category %> </p>
+      </li>
+    <% }) %>
+    </ul>
   </body>
 </html>

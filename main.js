@@ -20,16 +20,23 @@ app.get("/students", (req, res) => {
   // connect to db and get data from students table
   dbConnection.query("SELECT * FROM student", (err, results) => {
     if (err) {
-    //   console.error("Error fetching students data:", err);
+      //   console.error("Error fetching students data:", err);
       res.status(500).send("Error fetching students data");
     } else {
-    //   console.log("Students data fetched successfully:", results);
+      //   console.log("Students data fetched successfully:", results);
       res.render("students.ejs", { students: results });
     }
   });
 });
+
 app.get("/subjects", (req, res) => {
-  res.render("subjects.ejs");
+  dbConnection.query("SELECT * FROM subject", (err, results) => {
+    if (err) {
+      res.status(500).send("Error fetching subjects data");
+    } else {
+      res.render("subjects.ejs", { subjects: results });
+    }
+  });
 });
 
 // start the server - must be at the bottom of the file/code
