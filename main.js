@@ -24,14 +24,17 @@ app.get("/students", (req, res) => {
       res.status(500).send("Error fetching students data");
     } else {
       //   console.log("Students data fetched successfully:", results);
-      // query and get classrooms 
-      dbConnection.query("SELECT * FROM classroom",(qErr, classroomData)=>{
-        if(qErr){
-          res.status(500).send("Could not get classroom data")
-        }else{
-          res.render("students.ejs", { students: results, classrooms: classroomData });
+      // query and get classrooms
+      dbConnection.query("SELECT * FROM classroom", (qErr, classroomData) => {
+        if (qErr) {
+          res.status(500).send("Could not get classroom data");
+        } else {
+          res.render("students.ejs", {
+            students: results,
+            classrooms: classroomData,
+          });
         }
-      })
+      });
     }
   });
 });
@@ -59,6 +62,21 @@ app.post("/add-subject", express.urlencoded({ extended: true }), (req, res) => {
   });
 });
 // TASK - ADD A STUDENT TO THE STUDENTS TABLE USING A POST REQUEST AND REDIRECT TO /STUDENTS AFTER ADDING THE STUDENT
+
+app.post("/add-student", express.urlencoded({ extended: true }), (req, res) => {
+  const addStudentSql = `INSERT INTO student(admission_number, student_name, gender, date_of_birth, guardian_name, guardian_phone, classroom_id) VALUES('${req.body.admission_number}','${req.body.student_name}','${req.body.gender}','${req.body.date_of_birth}','${req.body.guardian_name}','${req.body.guardian_phone}',${req.body.classroom_id})`;
+
+  dbConnection.query(addStudentSql, (err) => {
+    if (err) {
+      res
+        .status(500)
+        .send("Error in the sql statemnt for adding student: " + addStudentSql + err.message);
+    } else {
+      res.redirect("/students");
+    }
+  });
+});
+
 // start the server - must be at the bottom of the file/code
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

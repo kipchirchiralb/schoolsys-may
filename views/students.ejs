@@ -8,7 +8,7 @@
   <body>
     <h1>Students Data</h1>
 
-    <form action="" style="border: 2px solid grey; padding: 15px" >
+    <form action="/add-student" method="post" style="border: 2px solid grey; padding: 15px" >
       <h2>Add a student</h2>
 
       <label>Select a class</label>
@@ -49,7 +49,7 @@
     <%   students.forEach(stud=>{   %>
         
         <div style="border: 1px solid #ccc; padding: 10px; width: 200px;">
-            <p>Student Name: <%= stud.name %></p>
+            <p>Student Name: <%= stud.student_name %></p>
             <p>Admission Number: <%= stud.admission_number %></p>
             <p>Gender: <%= stud.gender %></p>
             <p>Date of Birth: <%= stud.date_of_birth.toDateString() %></p>
