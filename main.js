@@ -24,7 +24,14 @@ app.get("/students", (req, res) => {
       res.status(500).send("Error fetching students data");
     } else {
       //   console.log("Students data fetched successfully:", results);
-      res.render("students.ejs", { students: results });
+      // query and get classrooms 
+      dbConnection.query("SELECT * FROM classroom",(qErr, classroomData)=>{
+        if(qErr){
+          res.status(500).send("Could not get classroom data")
+        }else{
+          res.render("students.ejs", { students: results, classrooms: classroomData });
+        }
+      })
     }
   });
 });
@@ -42,7 +49,7 @@ app.get("/subjects", (req, res) => {
 app.post("/add-subject", express.urlencoded({ extended: true }), (req, res) => {
   const sqlQuery = `INSERT INTO subject (subject_name, subject_code, category) VALUES ('${req.body.subject_name}', '${req.body.subject_code}', '${req.body.category}')`;
   // template literals
-
+  console.log(sqlQuery);
   dbConnection.query(sqlQuery, (err) => {
     if (err) {
       res.status(500).send("Error adding subject");
@@ -50,7 +57,7 @@ app.post("/add-subject", express.urlencoded({ extended: true }), (req, res) => {
       res.redirect("/subjects");
     }
   });
-}); 
+});
 // TASK - ADD A STUDENT TO THE STUDENTS TABLE USING A POST REQUEST AND REDIRECT TO /STUDENTS AFTER ADDING THE STUDENT
 // start the server - must be at the bottom of the file/code
 app.listen(port, () => {

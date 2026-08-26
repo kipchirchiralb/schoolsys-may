@@ -7,6 +7,52 @@
   </head>
   <body>
     <h1>Students Data</h1>
+
+    <form action="" style="border: 2px solid grey; padding: 15px" >
+      <h2>Add a student</h2>
+
+      <label>Select a class</label>
+      <select name="classroom_id" id="classroom_id">
+        <option value="">Select Class</option>
+        <% classrooms.forEach(room=>{ %>
+            <option value="<%=room.classroom_id%>"> <%= room.classroom_name %> </option>
+        <% }) %>
+      </select>
+      <br>
+
+      <!-- 
+      admission_number VARCHAR(20) NOT NULL UNIQUE,
+    student_name     VARCHAR(100) NOT NULL,
+    gender           ENUM('Male','Female') NOT NULL,
+    date_of_birth    DATE,
+    guardian_name    VARCHAR(100),
+    guardian_phone   VARCHAR(20),    
+      
+      -->
+      <label for="student_name">Student Name</label>
+      <input type="text" name="student_name" id="student_name">
+      <br>
+      <label for="admission_number">Admission Number </label>
+      <input type="text" name="admission_number" id="admision_number">
+      <br>
+      <label for="gender">Gender</label>
+      <input type="radio" name="gender" id="male" value="Male">
+      <label for="male">Male</label>
+      <input type="radio" name="gender" id="female" value="Female">
+      <label for="female">female</label>
+      <br>
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="date_of_birth">
+      <br>
+      <label for="guardian_name">Guardian Name</label>
+      <input type="text" name="guardian_name" id="guardian_name">
+      <br>
+      <label  for="guardian_phone">Guardian Phone</label>
+      <input type="text" id="guardian_phone" name="guardian_phone">
+      <br>
+      <input type="submit" value="+ add student">
+    </form>
+
   
     <section style="display: flex; flex-wrap: wrap; gap: 20px;">
 
