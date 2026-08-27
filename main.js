@@ -1,6 +1,7 @@
 // express server
 const express = require("express");
 const app = express();
+app.use(express.static("public")); // telling express to serve static files from public folder(css,images,dom js)
 const port = 3000;
 // using mysql2 package/module to connect to mysql database
 const mysql = require("mysql2");
@@ -70,13 +71,21 @@ app.post("/add-student", express.urlencoded({ extended: true }), (req, res) => {
     if (err) {
       res
         .status(500)
-        .send("Error in the sql statemnt for adding student: " + addStudentSql + err.message);
+        .send(
+          "Error in the sql statemnt for adding student: " +
+            addStudentSql +
+            err.message,
+        );
     } else {
       res.redirect("/students");
     }
   });
 });
 
+// just before starting the server- handle 404
+app.use((req, res) => {
+  res.status(404).render("404.ejs");
+});
 // start the server - must be at the bottom of the file/code
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

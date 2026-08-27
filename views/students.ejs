@@ -3,62 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Students</title>
+    <title>Students | Shule Bora</title>
+     <link rel="stylesheet" href="/main.css">
   </head>
   <body>
-    <h1>Students Data</h1>
+    <%- include("_header.ejs")  %>
+    <main class="page-shell">
+    <div class="page-intro"><div><span class="eyebrow">School records</span><h1>Students</h1><p>Keep learner and guardian details easy to find.</p></div></div>
 
-    <form action="/add-student" method="post" style="border: 2px solid grey; padding: 15px" >
+    <form class="panel" action="/add-student" method="post">
       <h2>Add a student</h2>
-
-      <label>Select a class</label>
+      <div class="form-grid">
+      <div class="field"><label for="classroom_id">Select a class</label>
       <select name="classroom_id" id="classroom_id">
         <option value="">Select Class</option>
         <% classrooms.forEach(room=>{ %>
             <option value="<%=room.classroom_id%>"> <%= room.classroom_name %> </option>
         <% }) %>
-      </select>
-      <br>
-      <label for="student_name">Student Name</label>
-      <input type="text" name="student_name" id="student_name">
-      <br>
-      <label for="admission_number">Admission Number </label>
-      <input type="text" name="admission_number" id="admision_number">
-      <br>
-      <label for="gender">Gender</label>
+      </select></div>
+      <div class="field"><label for="student_name">Student Name</label><input type="text" name="student_name" id="student_name" required></div>
+      <div class="field"><label for="admission_number">Admission Number</label><input type="text" name="admission_number" id="admission_number" required></div>
+      <div class="field"><label for="male">Gender</label><div class="radio-row">
       <input type="radio" name="gender" id="male" value="Male">
       <label for="male">Male</label>
       <input type="radio" name="gender" id="female" value="Female">
-      <label for="female">female</label>
-      <br>
-      <label for="dob">Date of Birth</label>
-      <input type="date" id="dob" name="date_of_birth">
-      <br>
-      <label for="guardian_name">Guardian Name</label>
-      <input type="text" name="guardian_name" id="guardian_name">
-      <br>
-      <label  for="guardian_phone">Guardian Phone</label>
-      <input type="text" id="guardian_phone" name="guardian_phone">
-      <br>
-      <input type="submit" value="+ add student">
+      <label for="female">Female</label></div></div>
+      <div class="field"><label for="dob">Date of Birth</label><input type="date" id="dob" name="date_of_birth"></div>
+      <div class="field"><label for="guardian_name">Guardian Name</label><input type="text" name="guardian_name" id="guardian_name"></div>
+      <div class="field"><label for="guardian_phone">Guardian Phone</label><input type="text" id="guardian_phone" name="guardian_phone"></div>
+      <div class="form-submit"><button class="button" type="submit">Add student</button></div>
+      </div>
     </form>
 
-  
-    <section style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <section class="record-grid">
 
     <%   students.forEach(stud=>{   %>
         
-        <div style="border: 1px solid #ccc; padding: 10px; width: 200px;">
-            <p>Student Name: <%= stud.student_name %></p>
-            <p>Admission Number: <%= stud.admission_number %></p>
-            <p>Gender: <%= stud.gender %></p>
-            <p>Date of Birth: <%= stud.date_of_birth.toDateString() %></p>
-            <p>Guardian Name: <%= stud.guardian_name %></p>
-            <p>Guardian Phone: <%= stud.guardian_phone %></p>
-            <p>Classroom ID: <%= stud.classroom_id %></p>
+        <div class="record-card">
+          <p><strong>Student</strong> <%= stud.student_name %></p>
+          <p><strong>Admission</strong> <%= stud.admission_number %></p>
+          <p><strong>Gender</strong> <%= stud.gender %></p>
+          <p><strong>Date of birth</strong> <%= stud.date_of_birth.toDateString() %></p>
+          <p><strong>Guardian</strong> <%= stud.guardian_name %></p>
+          <p><strong>Phone</strong> <%= stud.guardian_phone %></p>
+          <p><strong>Classroom</strong> <%= stud.classroom_id %></p>
         </div>
     <% }) %>
 
-    </section>
+    </section></main>
   </body>
 </html>

@@ -3,37 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>School Subjects</title>
+    <title>Subjects | Shule Bora</title>
+     <link rel="stylesheet" href="/main.css">
   </head>
   <body>
-    <h1>Subjects Data</h1>
-    <form action="/add-subject" method="post" >
+    <%- include("_header.ejs")  %>
+    <main class="page-shell"><div class="page-intro"><div><span class="eyebrow">Academic structure</span><h1>Subjects</h1><p>Organise the subjects your learners study.</p></div></div>
+    <form class="panel" action="/add-subject" method="post" >
       <h2> Add New Subject</h2>
-      <label for="subject_name">Subject Name:</label>
-      <input type="text" id="subject_name" name="subject_name" required />
-      <br />
-      <label for="subject_code">Subject Code:</label>
-      <input type="text" id="subject_code" name="subject_code" required />
-      <br />
-      <label for="category">Category:</label>
-      <select name="category" id="category">
+      <div class="form-grid"><div class="field"><label for="subject_name">Subject Name</label><input type="text" id="subject_name" name="subject_name" required /></div>
+      <div class="field"><label for="subject_code">Subject Code</label><input type="text" id="subject_code" name="subject_code" required /></div>
+      <div class="field"><label for="category">Category</label><select name="category" id="category">
         <option value="Science">Science</option>
         <option value="Arts">Arts</option>
         <option value="Mathematics">Mathematics</option>
         <option value="Languages">Languages</option>
-      </select>
-      <br />
-      <button type="submit">Add Subject</button>
+      </select></div><div class="form-submit"><button class="button" type="submit">Add subject</button></div></div>
     </form>
-    <ul>   
+    <ul class="subject-list">
     <%  subjects.forEach(subject=>{ %>
-      <li>
-        <h2> Subject ID: <%= subject.subject_id %> </h2>
-        <p> Subject Name: <%= subject.subject_name %> </p>
-        <p> Subject Code: <%= subject.subject_code %> </p>
-        <p> Category: <%= subject.category %> </p>
+      <li class="subject-item">
+        <h3><%= subject.subject_name %></h3>
+        <p>Subject ID: <%= subject.subject_id %></p><p>Code: <%= subject.subject_code %></p><p>Category: <%= subject.category %></p>
       </li>
     <% }) %>
-    </ul>
+    </ul></main>
   </body>
 </html>

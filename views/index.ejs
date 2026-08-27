@@ -1,84 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shule bora school system</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 20px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .hero {
-            background-color: #f4f4f4;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .cta {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .cta a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
-</head>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/students">Students</a></li>
-                <li><a href="/teachers">Teachers</a></li>
-                <li><a href="/fees">Fees</a></li>
-                <li><a href="/exams">Exams</a></li>
-                <li><a href="/subjects">Subjects</a></li>
-            </ul>
-        </nav>
-        </header>
-<section class="hero">
-    <h1>Shule bora school system</h1>
-    <p>manage your school with ease through AI assisted actions</p>
-    </section>
-    <ul>    
-        <h2>Services</h2>
-        <li>Students records management </li>
-        <li>Teachers records management </li>
-        <li>School fees management </li>
-        <li>Exams Portal</li>
-    </ul>
-    <section class="cta">
-        <h2>Get started today. Register your school for a demo acccount</h2>
-        <a href="/register">Register</a>
-    </section>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shule Bora | School management made for Kenya</title>
+    <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <%- include("_header.ejs") %>
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <span class="eyebrow">Built for Kenyan schools</span>
+            <h1>More time for <em>teaching.</em> Less time on paperwork.</h1>
+            <p class="hero-copy">
+              Shule Bora brings student records, academics, fees and school
+              communication into one calm, connected workspace for primary,
+              junior secondary and senior secondary schools.
+            </p>
+            <a class="button" href="/#contact">Request a free demo</a>
+            <a class="button secondary" href="/students">Explore the system</a>
+            <p class="hero-note">
+              Designed for CBC-aligned school workflows across Kenya.
+            </p>
+          </div>
+          <div
+            class="dashboard-art"
+            aria-label="School performance dashboard preview"
+          >
+            <div class="art-top">
+              <strong>School pulse</strong
+              ><span class="art-tag">Term 2 · 2026</span>
+            </div>
+            <p class="muted">Attendance and learning progress</p>
+            <div class="art-chart">
+              <span class="bar" style="height: 62%"></span
+              ><span class="bar"></span><span class="bar"></span
+              ><span class="bar"></span><span class="bar"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section-heading">
+          <span class="eyebrow">One system. Every school day.</span>
+          <h2>The practical tools your team reaches for daily.</h2>
+          <p>
+            From admission to assessment, Shule Bora keeps your school office
+            organised and your leadership team informed.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-icon">01</span>
+            <h3>Student records</h3>
+            <p>
+              Find learner details, guardians and class placement without
+              digging through files.
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">02</span>
+            <h3>Academic tracking</h3>
+            <p>
+              Keep subjects, assessments and progress visible for better learner
+              support.
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">03</span>
+            <h3>Fees clarity</h3>
+            <p>
+              Give your office a clearer view of balances and payment
+              conversations.
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">04</span>
+            <h3>Team alignment</h3>
+            <p>
+              Help administrators and teachers work from the same up-to-date
+              information.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section alt">
+        <div class="section-heading">
+          <span class="eyebrow">Made to grow with you</span>
+          <h2>One platform for every stage of learning.</h2>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card">
+            <span class="audience-number">01</span>
+            <h3>Primary schools</h3>
+            <p>
+              Build strong foundations with simple learner records, class lists
+              and guardian information in one place.
+            </p>
+          </article>
+          <article class="audience-card">
+            <span class="audience-number">02</span>
+            <h3>Junior secondary</h3>
+            <p>
+              Coordinate growing subject choices, assessments and class
+              responsibilities with less friction.
+            </p>
+          </article>
+          <article class="audience-card">
+            <span class="audience-number">03</span>
+            <h3>Senior secondary</h3>
+            <p>
+              Bring structure to pathways, performance conversations and the
+              decisions that shape the next step.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="cta" id="contact">
+        <h2>Give your school office a clearer day.</h2>
+        <p>See how Shule Bora can fit your school in a guided demo.</p>
+        <a href="mailto:hello@shulebora.co.ke">Talk to our team</a>
+      </section>
+    </main>
+    <footer class="footer">
+      Shule Bora School System · Supporting schools across Kenya
+    </footer>
+  </body>
 </html>
