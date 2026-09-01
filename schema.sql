@@ -24,6 +24,7 @@ CREATE TABLE classroom (
     capacity       INT DEFAULT 45
 );
 
+--  
 
 -- ---------------------------------------------------------------------
 -- 2. SUBJECT

@@ -49,7 +49,7 @@ app.get("/subjects", (req, res) => {
     }
   });
 });
-
+// multer js
 app.post("/add-subject", express.urlencoded({ extended: true }), (req, res) => {
   const sqlQuery = `INSERT INTO subject (subject_name, subject_code, category) VALUES ('${req.body.subject_name}', '${req.body.subject_code}', '${req.body.category}')`;
   // template literals
